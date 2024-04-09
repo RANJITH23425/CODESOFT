@@ -1,0 +1,64 @@
+#include<iostream>
+#include<cstdlib>
+#include<ctime>
+using namespace std;
+void numberguess(int low,int high ,int count,int random_no)
+{
+ int guess;
+ cout<<"### GUESS THE NUMBER ###"<<endl;
+while(count>0) 
+      {
+         cin>>guess;
+         if(random_no==guess)
+         {
+            cout<<"------CONGRATULATIONS YOU WON------"<<endl;
+            break; 
+         }
+         if(guess<low)
+            cout<<"It is too low"<<endl;
+         else if(guess>high)
+             cout<<"It is too high"<<endl;   
+         else if(low<guess&& guess<random_no) 
+             cout<<"It is low !!!"<<endl;
+         else 
+             cout<<"It is high !!!"<<endl;
+         count--;
+         cout<< count<<"-chances left"<<endl;
+         if(count==0)
+         {
+          cout<<"you loose"<<endl;
+          }
+        }
+    }
+
+int main()
+{
+    srand(time(0));
+   int a,n,r=1,l,h;
+    cout<<"------WELCOME TO THE NUMBER GUESSING GAME------"<<endl; 
+    
+   while(r)
+   {
+   a=rand()%100;
+   l=a-10;
+   h=a+10;
+    cout<<"Enter the mode you want to play\n 1.EASY MODE(30-chances)\n 2.HARD MODE(10-chances)"<<endl;
+    cin>>n;
+    if(n==1)
+    {
+       n=30;
+    numberguess(l,h,n,a);
+    }
+    else if(n==2)
+    {
+       n=10;
+    numberguess(l,h,n,a);
+    }
+    else 
+       cout<<"INVALID"<<endl;
+    
+    cout<<"### DO YOU WANT TO PLAY AGAIN ###\n 1->CONTINUE\n 0->EXIT"<<endl;
+    cin>>r;
+    } 
+    return 0;
+}
